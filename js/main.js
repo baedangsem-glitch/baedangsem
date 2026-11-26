@@ -231,23 +231,50 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // 해외 주식 페이지 접속 시 무료 환율 API 자동 호출
+  // 해외 주식 페이지 접속 시 장중 실시간 환율 API 호출 (실패 시 일일 기준 환율 백업)
   async function fetchLiveExchangeRate() {
     if (!isForeign || !exchangeRateInput) return;
 
     exchangeRateInput.value = marketConfig.defaultRate;
     if (rateStatusEl) rateStatusEl.textContent = "최신 환율 불러오는 중...";
 
+    // 1순위: Cloudflare Pages Functions 장중 실시간 환율
+    if (marketConfig.liveRateApiUrl) {
+      try {
+        const response = await fetch(marketConfig.liveRateApiUrl, { cache: "no-store" });
+        if (!response.ok) throw new Error("실시간 API 응답 오류");
+        const data = await response.json();
+
+        if (typeof data.rate === "number" && data.rate > 0) {
+          exchangeRateInput.value = data.rate;
+          if (rateStatusEl) {
+            const updatedDate = data.updatedAt ? new Date(data.updatedAt) : new Date();
+            const timeText = updatedDate.toLocaleTimeString("ko-KR", {
+              hour: "2-digit",
+              minute: "2-digit",
+              hour12: false,
+            });
+            rateStatusEl.textContent = `실시간 시장 환율 자동 적용 (${timeText} 기준 · 직접 수정 가능)`;
+          }
+          updateCalculation();
+          return;
+        }
+      } catch {
+        // 로컬 환경(Live Server) 또는 일시적 장애 시 아래 2순위 백업 API로 자동 진행
+      }
+    }
+
+    // 2순위: 무료 일일 기준 환율 백업 API
     try {
       const response = await fetch(marketConfig.rateApiUrl);
-      if (!response.ok) throw new Error("API 응답 오류");
+      if (!response.ok) throw new Error("백업 API 응답 오류");
       const data = await response.json();
 
       if (data && data.rates && data.rates.KRW) {
         const fetchedRate = Number((data.rates.KRW * marketConfig.rateUnit).toFixed(2));
         exchangeRateInput.value = fetchedRate;
         if (rateStatusEl) {
-          rateStatusEl.textContent = `실시간 기준 환율 자동 적용 (직접 수정 가능)`;
+          rateStatusEl.textContent = "일일 기준 환율 자동 적용 (직접 수정 가능)";
         }
         updateCalculation();
       } else {
@@ -255,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     } catch {
       if (rateStatusEl) {
-        rateStatusEl.textContent = `기본 환율 적용됨 (원하는 환율로 직접 수정 가능)`;
+        rateStatusEl.textContent = "기본 환율 적용됨 (원하는 환율로 직접 수정 가능)";
       }
     }
   }

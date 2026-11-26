@@ -18,9 +18,10 @@ export const MARKETS = {
     name: "미국 주식",
     currency: "USD",
     symbol: "$",
-    defaultTaxRate: 0.15, // 한미 조세조약 배당소득세 15%
-    defaultRate: 1400,    // API 실패 시 기본 환율 (1달러당 원화)
+    defaultTaxRate: 0.15,
+    defaultRate: 1400,
     rateUnit: 1,
+    liveRateApiUrl: "/api/rate?market=US",
     rateApiUrl: "https://open.er-api.com/v6/latest/USD",
     defaultLabel: "미국 현지 원천징수 (기본 15%)",
     defaultDesc: "한미 조세조약에 따라 미국 배당소득세 15%가 현지 원천징수됩니다.",
@@ -30,9 +31,10 @@ export const MARKETS = {
     name: "일본 주식",
     currency: "JPY",
     symbol: "¥",
-    defaultTaxRate: 0.15315, // 일본 배당소득세 15.315% (부흥특별소득세 포함)
-    defaultRate: 920,        // API 실패 시 기본 환율 (100엔당 원화)
+    defaultTaxRate: 0.15315,
+    defaultRate: 920,
     rateUnit: 100,
+    liveRateApiUrl: "/api/rate?market=JP",
     rateApiUrl: "https://open.er-api.com/v6/latest/JPY",
     defaultLabel: "일본 현지 원천징수 (기본 15.315%)",
     defaultDesc: "일본 상장 주식 및 ETF 배당금에는 현지 세율 15.315%가 원천징수됩니다.",
