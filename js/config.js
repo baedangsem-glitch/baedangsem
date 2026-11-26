@@ -1,6 +1,6 @@
 export const SITE_CONFIG = {
   siteName: "배당셈",
-  domain: "https://your-domain.pages.dev",
+  domain: "https://baedangsem.pages.dev",
   contactEmail: "baedangsem@gmail.com",
   lastUpdated: "2026-11-25",
 };
