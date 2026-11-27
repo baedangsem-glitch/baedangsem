@@ -1,477 +1,229 @@
 :root {
-    --bg: #f8fafc;
-    --surface: #ffffff;
-    --text-main: #0f172a;
-    --text-sub: #475569;
-    --text-muted: #94a3b8;
-    --primary: #2563eb;
-    --primary-hover: #1d4ed8;
-    --primary-soft: #eff6ff;
-    --border: #e2e8f0;
-    --success: #059669;
-    --danger: #dc2626;
-    --radius: 14px;
-    --shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
-  }
-  
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-    background-color: var(--bg);
-    color: var(--text-main);
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-  }
-  
-  a {
-    color: var(--primary);
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  .container {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  /* Header */
-  .site-header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  
-  .header-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 64px;
-  }
-  
-  .logo {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--text-main);
-    letter-spacing: -0.02em;
-  }
-  
-  .nav-links {
-    display: flex;
-    gap: 20px;
-    font-size: 0.92rem;
-  }
-  
-  .nav-links a {
-    color: var(--text-sub);
-    font-weight: 500;
-  }
-  
-  .nav-links a:hover {
-    color: var(--primary);
-    text-decoration: none;
-  }
-  
-  /* Hero */
-  .hero {
-    padding: 40px 0 24px;
-    text-align: center;
-  }
-  
-  .hero-badge {
-    display: inline-block;
-    background: var(--primary-soft);
-    color: var(--primary);
-    font-size: 0.8rem;
-    font-weight: 600;
-    padding: 4px 12px;
-    border-radius: 999px;
-    margin-bottom: 12px;
-  }
-  
-  .hero h1 {
-    font-size: 1.9rem;
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    margin-bottom: 8px;
-  }
-  
-  .hero p {
-    color: var(--text-sub);
-    font-size: 0.98rem;
-  }
-  
-  /* Calculator Layout */
-  .calc-grid {
-    display: grid;
-    grid-template-columns: 1.15fr 0.85fr;
-    gap: 24px;
-    margin-bottom: 48px;
-    align-items: start;
-  }
-  
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 28px;
-    box-shadow: var(--shadow);
-  }
-  
-  .card-title {
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .btn-reset {
-    background: transparent;
-    border: 1px solid var(--border);
-    color: var(--text-sub);
-    font-size: 0.82rem;
-    padding: 5px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  
-  .btn-reset:hover {
-    background: var(--bg);
-    color: var(--text-main);
-  }
-  
-  /* Form Elements */
-  .form-group {
-    margin-bottom: 22px;
-  }
-  
-  .form-label {
-    display: block;
-    font-size: 0.9rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--text-main);
-  }
-  
-  .form-hint {
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    font-weight: 400;
-    margin-left: 6px;
-  }
-  
-  .input-wrap {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-  
-  .input-wrap input[type="number"] {
-    width: 100%;
-    padding: 12px 44px 12px 14px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    font-size: 1rem;
-    font-variant-numeric: tabular-nums;
-    outline: none;
-    transition: border-color 0.15s;
-  }
-  
-  .input-wrap input[type="number"]:focus {
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-  }
-  
-  .input-unit {
-    position: absolute;
-    right: 14px;
-    color: var(--text-sub);
-    font-size: 0.9rem;
-    font-weight: 500;
-  }
-  
-  /* Frequency Segmented Control */
-  .freq-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-  }
-  
-  .freq-option input {
-    display: none;
-  }
-  
-  .freq-option label {
-    display: block;
-    text-align: center;
-    padding: 10px 6px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    font-size: 0.88rem;
-    font-weight: 500;
-    color: var(--text-sub);
-    cursor: pointer;
-    transition: all 0.15s;
-  }
-  
-  .freq-option input:checked + label {
-    background: var(--primary-soft);
-    border-color: var(--primary);
-    color: var(--primary);
-    font-weight: 700;
-  }
-  
-  /* Tax Exemption Checkboxes */
-  .checkbox-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .checkbox-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 11px 14px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: background 0.15s, border-color 0.15s;
-  }
-  
-  .checkbox-item:hover {
-    background: var(--bg);
-  }
-  
-  .checkbox-item input[type="checkbox"] {
-    margin-top: 3px;
-    width: 17px;
-    height: 17px;
-    accent-color: var(--primary);
-    cursor: pointer;
-  }
-  
-  .checkbox-text strong {
-    display: block;
-    font-size: 0.9rem;
-    color: var(--text-main);
-  }
-  
-  .checkbox-text span {
-    font-size: 0.8rem;
-    color: var(--text-sub);
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  /* Result Card */
-  .result-card {
-    position: sticky;
-    top: 84px;
-  }
-  
-  .result-highlight {
-    background: var(--primary-soft);
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .result-highlight .label {
-    font-size: 0.88rem;
-    color: var(--primary);
-    font-weight: 600;
-  }
-  
-  .result-highlight .value {
-    font-size: 2rem;
-    font-weight: 800;
-    color: var(--text-main);
-    font-variant-numeric: tabular-nums;
-    margin-top: 4px;
-    letter-spacing: -0.02em;
-  }
-  
-  .result-list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-bottom: 20px;
-  }
-  
-  .result-list li {
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.94rem;
-    padding-bottom: 10px;
-    border-bottom: 1px dashed var(--border);
-  }
-  
-  .result-list li:last-child {
-    border-bottom: none;
-    padding-bottom: 0;
-  }
-  
-  .result-list .num {
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
-  }
-  
-  .text-danger {
-    color: var(--danger);
-  }
-  
-  .text-success {
-    color: var(--success);
-  }
-  
-  .applied-info {
-    background: var(--bg);
-    border-radius: 10px;
-    padding: 12px 14px;
-    font-size: 0.82rem;
-    color: var(--text-sub);
-  }
-  
-  .applied-badge {
-    display: inline-block;
-    font-weight: 700;
-    color: var(--text-main);
-    margin-bottom: 4px;
-  }
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --text-main: #0f172a;
+  --text-sub: #475569;
+  --text-muted: #94a3b8;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --primary-soft: #eff6ff;
+  --border: #e2e8f0;
+  --success: #059669;
+  --danger: #dc2626;
+  --radius: 14px;
+  --shadow: 0 4px 20px rgba(15, 23, 42, 0.05);
+}
 
-  /* 금융소득종합과세 경고 배너 */
-.warning-banner {
-    margin-top: 14px;
-    padding: 14px 16px;
-    background-color: #fffbeb;
-    border: 1px solid #fcd34d;
-    border-radius: 10px;
-    color: #92400e;
-    font-size: 0.84rem;
-    line-height: 1.5;
-  }
-  
-  .warning-banner strong {
-    display: block;
-    margin-bottom: 4px;
-    color: #b45309;
-    font-size: 0.88rem;
-  }
-  
-  .warning-banner p {
-    margin: 0;
-  }
-  
-  /* Content Sections (SEO & AdSense) */
-  .content-section {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 32px;
-    margin-bottom: 24px;
-  }
-  
-  .content-section h2 {
-    font-size: 1.3rem;
-    font-weight: 700;
-    margin-bottom: 16px;
-    letter-spacing: -0.02em;
-  }
-  
-  .content-section h3 {
-    font-size: 1.02rem;
-    font-weight: 700;
-    margin: 18px 0 8px;
-  }
-  
-  .content-section p,
-  .content-section li {
-    color: var(--text-sub);
-    font-size: 0.95rem;
-    margin-bottom: 10px;
-  }
-  
-  .content-section ul {
-    padding-left: 20px;
-  }
-  
-  .info-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 16px 0;
-    font-size: 0.9rem;
-  }
-  
-  .info-table th,
-  .info-table td {
-    border: 1px solid var(--border);
-    padding: 10px 12px;
-    text-align: left;
-  }
-  
-  .info-table th {
-    background: var(--bg);
-    font-weight: 600;
-    color: var(--text-main);
-  }
-  
-  /* Footer */
-  .site-footer {
-    border-top: 1px solid var(--border);
-    padding: 32px 0;
-    margin-top: 48px;
-    color: var(--text-sub);
-    font-size: 0.86rem;
-  }
-  
-  .footer-inner {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 16px;
-  }
-  
-  .footer-links {
-    display: flex;
-    gap: 16px;
-  }
-  
-  @media (max-width: 768px) {
-    .calc-grid {
-      grid-template-columns: 1fr;
-    }
-    .result-card {
-      position: static;
-    }
-    .hero h1 {
-      font-size: 1.5rem;
-    }
-    .freq-grid {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-  /* 활성 메뉴 강조 */
+body {
+  font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg);
+  color: var(--text-main);
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.site-header {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.logo {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-main);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
+.logo:hover {
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  font-size: 0.92rem;
+}
+
+.nav-links a {
+  color: var(--text-sub);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.nav-links a:hover {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+/* 활성 메뉴 강조 */
 .nav-links a.active {
   color: var(--primary);
   font-weight: 700;
+}
+
+/* Hero */
+.hero {
+  padding: 40px 0 24px;
+  text-align: center;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: var(--primary-soft);
+  color: var(--primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.hero h1 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 8px;
+  word-break: keep-all;
+}
+
+.hero p {
+  color: var(--text-sub);
+  font-size: 0.98rem;
+  word-break: keep-all;
+}
+
+/* Calculator Layout */
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 24px;
+  margin-bottom: 48px;
+  align-items: start;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+  box-shadow: var(--shadow);
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-reset {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-sub);
+  font-size: 0.82rem;
+  padding: 5px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s;
+}
+
+.btn-reset:hover {
+  background: var(--bg);
+  color: var(--text-main);
+}
+
+/* Form Elements */
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text-main);
+}
+
+.form-hint {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 400;
+  margin-left: 6px;
+}
+
+.input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrap input[type="number"] {
+  width: 100%;
+  padding: 12px 44px 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 1rem;
+  font-variant-numeric: tabular-nums;
+  outline: none;
+  background: #ffffff;
+  color: var(--text-main);
+  -webkit-appearance: none;
+  appearance: none;
+  transition: border-color 0.15s;
+}
+
+.input-wrap input[type="number"]:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.input-unit {
+  position: absolute;
+  right: 14px;
+  color: var(--text-sub);
+  font-size: 0.9rem;
+  font-weight: 500;
+  pointer-events: none;
 }
 
 /* 환율 상태 텍스트 */
@@ -482,6 +234,113 @@
   color: var(--primary);
 }
 
+/* Frequency Segmented Control */
+.freq-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+}
+
+.freq-option input {
+  display: none;
+}
+
+.freq-option label {
+  display: block;
+  text-align: center;
+  padding: 10px 6px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-sub);
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+
+.freq-option input:checked + label {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary);
+  font-weight: 700;
+}
+
+/* Tax Exemption Checkboxes */
+.checkbox-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 11px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.checkbox-item:hover {
+  background: var(--bg);
+}
+
+.checkbox-item input[type="checkbox"] {
+  margin-top: 3px;
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.checkbox-text strong {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-main);
+}
+
+.checkbox-text span {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Result Card */
+.result-card {
+  position: sticky;
+  top: 84px;
+}
+
+.result-highlight {
+  background: var(--primary-soft);
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.result-highlight .label {
+  font-size: 0.88rem;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.result-highlight .value {
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--text-main);
+  font-variant-numeric: tabular-nums;
+  margin-top: 4px;
+  letter-spacing: -0.02em;
+  word-break: break-all;
+}
+
 /* 이중 통화 (원화 + 현지 통화) 표시 */
 .result-highlight .sub-value {
   font-size: 1.05rem;
@@ -489,6 +348,35 @@
   color: var(--text-sub);
   font-variant-numeric: tabular-nums;
   margin-top: 2px;
+}
+
+.result-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.result-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.94rem;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border);
+}
+
+.result-list li:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.result-list .num {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  text-align: right;
 }
 
 .num-stack {
@@ -501,6 +389,116 @@
   font-weight: 500;
   color: var(--text-muted);
   font-variant-numeric: tabular-nums;
+}
+
+.text-danger {
+  color: var(--danger);
+}
+
+.text-success {
+  color: var(--success);
+}
+
+.applied-info {
+  background: var(--bg);
+  border-radius: 10px;
+  padding: 12px 14px;
+  font-size: 0.82rem;
+  color: var(--text-sub);
+}
+
+.applied-badge {
+  display: inline-block;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 4px;
+}
+
+/* 금융소득종합과세 경고 배너 */
+.warning-banner {
+  margin-top: 14px;
+  padding: 14px 16px;
+  background-color: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 10px;
+  color: #92400e;
+  font-size: 0.84rem;
+  line-height: 1.5;
+}
+
+.warning-banner strong {
+  display: block;
+  margin-bottom: 4px;
+  color: #b45309;
+  font-size: 0.88rem;
+}
+
+.warning-banner p {
+  margin: 0;
+}
+
+/* Content Sections */
+.content-section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  margin-bottom: 24px;
+}
+
+.content-section h1 {
+  font-size: 1.55rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.35;
+  word-break: keep-all;
+}
+
+.content-section h2 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+  word-break: keep-all;
+}
+
+.content-section h3 {
+  font-size: 1.02rem;
+  font-weight: 700;
+  margin: 22px 0 8px;
+}
+
+.content-section p,
+.content-section li {
+  color: var(--text-sub);
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+.content-section ul,
+.content-section ol {
+  padding-left: 20px;
+  margin-bottom: 14px;
+}
+
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.9rem;
+}
+
+.info-table th,
+.info-table td {
+  border: 1px solid var(--border);
+  padding: 10px 12px;
+  text-align: left;
+}
+
+.info-table th {
+  background: var(--bg);
+  font-weight: 600;
+  color: var(--text-main);
 }
 
 /* FAQ 아코디언 */
@@ -526,6 +524,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 .faq-item summary::-webkit-details-marker {
@@ -537,6 +536,7 @@
   font-size: 1.15rem;
   color: var(--primary);
   font-weight: 700;
+  flex-shrink: 0;
 }
 
 .faq-item[open] summary::after {
@@ -620,3 +620,213 @@
   text-decoration: none;
 }
 
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 32px 0;
+  margin-top: 48px;
+  color: var(--text-sub);
+  font-size: 0.86rem;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================
+   모바일 반응형 최적화 (768px 이하)
+   ========================================== */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 14px;
+  }
+
+  /* 헤더: 2단 배치 (윗줄 로고 / 아랫줄 가로 스크롤 메뉴) */
+  .header-inner {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    padding: 12px 0 0;
+    gap: 8px;
+  }
+
+  .logo {
+    font-size: 1.12rem;
+    text-align: center;
+  }
+
+  .nav-links {
+    gap: 4px;
+    justify-content: space-between;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-top: 1px solid #f1f5f9;
+    padding: 8px 0;
+    font-size: 0.84rem;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-links a {
+    padding: 6px 8px;
+    border-radius: 8px;
+    flex-shrink: 0;
+  }
+
+  .nav-links a.active {
+    background: var(--primary-soft);
+  }
+
+  /* 히어로 영역 */
+  .hero {
+    padding: 24px 0 18px;
+  }
+
+  .hero h1 {
+    font-size: 1.45rem;
+    line-height: 1.3;
+  }
+
+  .hero p {
+    font-size: 0.88rem;
+  }
+
+  /* 계산기 레이아웃 1열 전환 */
+  .calc-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .card {
+    padding: 18px 16px;
+  }
+
+  .card-title {
+    font-size: 1.02rem;
+    margin-bottom: 16px;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-hint {
+    display: block;
+    margin-left: 0;
+    margin-top: 2px;
+  }
+
+  .input-wrap input[type="number"] {
+    padding: 12px 42px 12px 12px;
+    font-size: 1rem;
+  }
+
+  .freq-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .freq-option label {
+    padding: 11px 6px;
+  }
+
+  .checkbox-item {
+    padding: 12px;
+  }
+
+  /* 결과 카드 */
+  .result-card {
+    position: static;
+  }
+
+  .result-highlight {
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .result-highlight .value {
+    font-size: 1.65rem;
+  }
+
+  .result-highlight .sub-value {
+    font-size: 0.95rem;
+  }
+
+  .result-list li {
+    font-size: 0.88rem;
+  }
+
+  /* 가이드·본문 영역 */
+  .content-section {
+    padding: 20px 16px;
+    margin-bottom: 18px;
+  }
+
+  .content-section h1 {
+    font-size: 1.32rem;
+  }
+
+  .content-section h2 {
+    font-size: 1.15rem;
+  }
+
+  .content-section h3 {
+    font-size: 0.98rem;
+  }
+
+  .content-section p,
+  .content-section li {
+    font-size: 0.9rem;
+  }
+
+  /* 표 가로 스크롤 대응 */
+  .info-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.83rem;
+  }
+
+  .info-table th {
+    white-space: nowrap;
+  }
+
+  .info-table td {
+    min-width: 110px;
+  }
+
+  /* 404 및 푸터 */
+  .error-box {
+    padding: 48px 16px;
+    margin: 24px 0;
+  }
+
+  .site-footer {
+    padding: 24px 0;
+    margin-top: 32px;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+  }
+
+  .footer-links {
+    justify-content: center;
+    gap: 14px;
+  }
+}
