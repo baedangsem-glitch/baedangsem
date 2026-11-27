@@ -665,8 +665,8 @@ a:hover {
   }
 
   .nav-links {
-    gap: 4px;
-    justify-content: space-between;
+    gap: 2px;
+    justify-content: safe center;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
